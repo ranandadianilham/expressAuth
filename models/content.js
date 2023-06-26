@@ -3,7 +3,7 @@ let { DataTypes, Sequelize } = require('sequelize');
 //let postgresqlConfig = require("../database/pgsql.connection");
 const postgresqlSequelize = require("../database/pgsql.connection");
 
-const contentSchema = postgresqlSequelize.postgresqlConnect.define('CONTENT', {
+const contentSchema = postgresqlSequelize.postgresqlConnect.define('content', {
     id: {
         field: 'id',
         type: DataTypes.INTEGER,
@@ -12,21 +12,21 @@ const contentSchema = postgresqlSequelize.postgresqlConnect.define('CONTENT', {
     },
     title: {
         field: 'title',
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     content: {
-        field: 'content',
+        field: 'body',
         type: DataTypes.STRING,
-        unique: true,
     },
     videoPath: {
         field: 'videoPath',
         type: DataTypes.STRING,
-        unique: true,
     },
     createdAt: {
         type: DataTypes.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false,
     }, 
     updatedAt: {
         type: DataTypes.DATE,

@@ -3,7 +3,7 @@ let {DataTypes , Sequelize} = require('sequelize');
 //let postgresqlConfig = require("../database/pgsql.connection");
 const postgresqlSequelize = require("../database/pgsql.connection");
 
-const userSchema =  postgresqlSequelize.postgresqlConnect.define('USER',{
+const userSchema =  postgresqlSequelize.postgresqlConnect.define('user',{
   id: {
     field: 'id',
     type: DataTypes.INTEGER,
@@ -12,20 +12,24 @@ const userSchema =  postgresqlSequelize.postgresqlConnect.define('USER',{
   },
   username: {
     field: 'username',
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false,
 },
 email: {
     field: 'email',
     type: DataTypes.STRING,
     unique: true,
+    allowNull: false,
 },
 password: {
     field: 'password',
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false,
 },
 role: {
   field: 'role',
-  type: DataTypes.STRING
+  type: DataTypes.STRING,
+  allowNull: false,
 }
 }, {
   timestamps: true,
