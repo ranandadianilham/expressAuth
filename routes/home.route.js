@@ -37,7 +37,7 @@ router.get('/article', auth, async (req, res) => {
         if(allRecords) {
             res.send({role: user?.role, totalRow: lim, data:allRecords});
         }else {
-            res.sendStatus(500, 'wtf');
+            res.sendStatus(404, "article not found");
         }
     } catch (error) {
 		  res.sendStatus(500, error);

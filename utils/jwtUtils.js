@@ -1,13 +1,14 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+require('dotenv').config()
 
 const generateToken = (payload, expiresIn) => {
-  return jwt.sign(payload, '1234', { expiresIn });
+  return jwt.sign(payload, process.env.JWT_KEY, { expiresIn });
 };
 
 const verifyToken = (token) => {
   try {
-    return jwt.verify(token, '1234');
+    return jwt.verify(token, process.env.JWT_KEY,);
   } catch (err) {
     return null;
   }

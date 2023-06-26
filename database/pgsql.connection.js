@@ -1,9 +1,10 @@
 const { Sequelize } = require('sequelize');
+require('dotenv').config()
 
-//const postgresqlConnect = new Sequelize('postgres://postgres:root@localhost:5432/nandasample'); // Example for postgres
-const postgresqlConnect = new Sequelize('nandasample', 'postgres', 'root', {
-    host: 'localhost',
-    port: '5432',
+const postgresqlConnect = new Sequelize(process.env.postgresql_database, process.env.postgresql_user, process.env.postgresql_password, {
+    host: process.env.postgresql_host,
+    port: process.env.postgresql_port,
     dialect: 'postgres'
   });
+  
 module.exports = { postgresqlConnect };

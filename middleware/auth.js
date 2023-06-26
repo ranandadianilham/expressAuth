@@ -9,17 +9,13 @@ const auth = async (req, res, next) => {
     res.status(401).send('Unauthorized');
     return;
   }
-  
   const decodedToken = verifyToken(token);
   if (!decodedToken) {
     res.status(401).send('Invalid token');
     return;
   }
-
   const userId = decodedToken.id;
-
   const user = User.findByPk(userId);
-  
   user.then((response) => {
     req.user = response.dataValues;
     req.token = token;
