@@ -45,4 +45,18 @@ role: {
 })();
 
 
+async function performBulkInsert(dataToInsert) {
+  try {
+    // Use the bulkCreate method to insert data into the table
+    const insertedRecords = await userSchema.bulkCreate(dataToInsert);
+
+    // The insertedRecords array will contain the inserted records with auto-generated IDs (if applicable)
+    console.log('Bulk insert successful!');
+    //console.log(insertedRecords);
+  } catch (error) {
+    console.error('Error performing bulk insert:', error);
+  }
+}
+
+
 module.exports = userSchema;  
